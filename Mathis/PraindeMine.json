@@ -1,0 +1,86 @@
+{
+   "initial_time": 0,
+   "dt": 1,
+   "seed": null,
+   "products": {
+
+      "Farine": {
+         "stock": 20,
+         "demand": 0,
+         "price": 1.10,
+         "recipe": [],
+         "process_time": 1
+      },
+      "Plastique": {
+         "stock": 20,
+         "demand": 0,
+         "price": 0.02,
+         "recipe": [],
+         "process_time": 1
+      },
+      "PainDeMie": {
+         "stock": 0,
+         "demand": 0,
+         "price": 2.40,
+         "recipe": ["Farine"],
+         "process_time": 1
+      },
+      "PainDeMieSansCroute": {
+         "stock": 0,
+         "demand": 0,
+         "price": 3.20,
+         "recipe": ["PainDeMie"],
+         "process_time": 1
+      }
+      ,
+      "PainDeMieEmballe": {
+         "stock": 0,
+         "demand": 10,
+         "price": 3,
+         "recipe": ["PainDeMie","Plastique"],
+         "process_time": 1
+      }
+      ,
+      "PainDeMieSansCrouteEmballe": {
+         "stock": 0,
+         "demand": 10,
+         "price": 4,
+         "recipe": ["PainDeMieSansCroute","Plastique"],
+         "process_time": 1
+      }
+   },
+
+   "machines": {
+
+      "Four": {
+         "setup_time": 1,
+         "process": "PainDeMie",
+         "can_process" : ["PainDeMie"],
+         "is_on":true,
+         "remain_setup": 0,
+         "time_breakdown": 2,
+         "process_cost": 0.05,
+         "process_done" : 0
+      },
+      "Decrouteur": {
+         "setup_time": 1,
+         "process": "PainDeMieSansCroute",
+         "can_process" : ["PainDeMieSansCroute"],
+         "is_on": true,
+         "remain_setup": 0,
+         "time_breakdown": 2,
+         "process_cost": 0.05,
+         "process_done" : 0
+      },
+      "Emballeur": {
+         "setup_time": 1,
+         "process": "PainDeMieEmballe",
+         "can_process" : ["PainDeMieSansCrouteEmballe", "PainDeMieEmballe"],
+         "is_on": true,
+         "remain_setup": 0,
+         "time_breakdown": 2,
+         "process_cost": 0.05,
+         "process_done" : 0
+      }
+   }
+}

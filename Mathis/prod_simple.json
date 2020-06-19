@@ -1,0 +1,57 @@
+{
+   "initial_time": 0,
+   "dt": 1,
+   "seed": null,
+   "products": {
+
+      "P1": {
+         "stock": 5,
+         "demand": 0,
+         "recipe": null,
+         "process_time": 1
+      },
+      "P2": {
+         "stock": 5,
+         "demand": 0,
+         "recipe": ["P1"],
+         "process_time": 1
+      },
+      "P3": {
+         "stock": 0,
+         "demand": 7,
+         "recipe": ["P2"],
+         "process_time": 1
+      },
+      "P4": {
+         "stock": 0,
+         "demand": 3,
+         "recipe": ["P2"],
+         "process_time": 1
+      }
+   },
+
+   "machines": {
+
+      "M1": {
+         "setup_time": 1,
+         "process": "P2",
+         "can_process" : ["P2"],
+         "is_on": true,
+         "remain_setup": 0
+      },
+      "M2": {
+         "setup_time": 1,
+         "process": "P3",
+         "can_process" : ["P3", "P4"],
+         "is_on": true,
+         "remain_setup": 0
+      },
+      "M3": {
+         "setup_time": 1,
+         "process": "P4",
+         "can_process" : ["P3", "P4"],
+         "is_on": true,
+         "remain_setup": 0
+      }
+   }
+}
